@@ -1,0 +1,128 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+.upload-file-wrapper {
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    width: '600px';
+    color: 'black';
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.upload-file-wrapper p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+}
+.browse-btn {
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    color: rgb(6, 140, 218);
+    background-color: rgb(6, 140, 218, 0.3);
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: auto;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.remove-btn {
+    border: 0px;
+    background: none;
+}
+.browse-btn input[type='file'] {
+    display: none;
+}
+.file-drop {
+    width: 100%;
+}
+.file-drop-target {
+    display: flex;
+}
+.drop-file-detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.drop-file-detail p {
+    font-size: 14px;
+    color: #cdcdcd;
+}
+
+.import-file-wrapper {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: '600px';
+    color: 'black';
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.05);
+}
+.import-file-wrapper p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+}
+.import-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgb(6, 140, 218);
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: auto;
+    display: inline-block;
+}
+.import-btn input[type='file'] {
+    display: none;
+}
+.import-drop {
+    width: 100%;
+}
+.filimporte-drop-target {
+    display: flex;
+}
+.import-file-detail {
+    display: flex;
+    justify-content: space-between;
+}
+.import-file-detail p {
+    font-size: 14px;
+    color: #cdcdcd;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+ul li:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.cancel {
+  position: relative;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.cancel:hover {
+  background-color: rgb(6, 140, 218, 0.1);
+  border-radius: 4px;
+}
