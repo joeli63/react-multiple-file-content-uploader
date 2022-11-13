@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState('');
+  const [emailNumbers, setEmailNumbers] = useState([]);
 
   const handle = (data) => {
     setFileList(previous => previous.concat(Object.values(data)));
@@ -21,20 +22,24 @@ function App() {
   useEffect(() => {
     setMessage('');
     const reader = new FileReader();
-    const readFile = async (index, result) => {
+    const readFile = async (index, result, emailNumbers) => {
       if (index >= fileList.length) {
-        return setEmails(result.map(email => email?.replace("\r", "")));
+        setEmails(result.map(email => email?.replace("\r", "")));
+        setEmailNumbers(emailNumbers);
+        return;
       }
 
       const file = fileList[index];
       reader.onload = async (e) => {
-        const text = e.target.result;
-        result = result?.length ? [...result, ...text.trim().split("\n")] : [...text.trim().split("\n")];
-        await readFile(index + 1, result);
+        const text = e.target?.result;
+        const emailList = text ? text.trim().split("\n") : [];
+        result = result?.length ? [...result, ...emailList] : emailList;
+        emailNumbers.push(emailList.length);
+        await readFile(index + 1, result, emailNumbers);
       }
       reader.readAsBinaryString(file);
     }
-    readFile(0, []);
+    readFile(0, [], []);
   }, [fileList]);
 
   const removeFile = (selectedIndex) => {
@@ -90,7 +95,8 @@ function App() {
       {!message && fileList?.length > 0 && <div className="file-list">
         <h3>File List</h3>
         <ul>
-          {fileList?.length > 0 && fileList.map((fileData, index) => <li key={`file-${index}`}>{fileData.name}<span className="cancel" onClick={(e) => removeFile(index)}>&#128473;</span></li>)}
+        <li key={`file-header`}>File Name<span>Email Number</span><span>Action</span></li>
+          {fileList?.length > 0 && fileList.map((fileData, index) => <li key={`file-${index}`}>${fileData.name}<span>{`emails: ${emailNumbers[index] ? emailNumbers[index] : 0}`}</span><span className="cancel" onClick={(e) => removeFile(index)}>&#128473;</span></li>)}
         </ul>
       </div>}
       {message && <div className={classNames({ 'message': true, 'success': !error, 'error': error })}>{message}</div>}
