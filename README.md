@@ -8,6 +8,7 @@ $ npm install
 
 ### Running the app
 $ npm run start
-You can see the running app at http://localhost:3000
 
-You can select test files in data folder.
+#### You can see the running app at http://localhost:3000
+
+#### You can select test files in data folder.
